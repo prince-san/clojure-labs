@@ -13,11 +13,11 @@
   (let [seq (seq-gen f)]
     (fn [x] (nth seq (/ x delta)))))
 
-(defn lazy-antiderivative-4
+(defn get-antiderivative-lazy
   [f]
    (get-area lazy-area-seq f))
 
-(let [antiderivative (lazy-antiderivative-4 square)]
+(let [antiderivative (get-antiderivative-lazy square)]
   (time (do
           (antiderivative 1000)
           (antiderivative 1200)
