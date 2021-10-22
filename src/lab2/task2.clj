@@ -4,7 +4,7 @@
 (defn square [x] (* x x))
 
 (defn step-area [f a b]
-    (* 1/2 (- b a) (+ (f a) (f b))))
+  (* 1/2 (- b a) (+ (f a) (f b))))
 
 (defn lazy-area-seq [f]
   (reductions + 0 (map #(step-area f % (+ delta %)) (iterate #(+ delta %) 0))))
@@ -13,9 +13,8 @@
   (let [seq (seq-gen f)]
     (fn [x] (nth seq (/ x delta)))))
 
-(defn get-antiderivative-lazy
-  [f]
-   (get-area lazy-area-seq f))
+(defn get-antiderivative-lazy [f]
+  (get-area lazy-area-seq f))
 
 (let [antiderivative (get-antiderivative-lazy square)]
   (time (do
