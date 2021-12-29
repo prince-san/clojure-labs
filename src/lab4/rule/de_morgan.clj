@@ -1,7 +1,8 @@
 (ns lab4.rule.de-morgan
   (:require [lab4.rule.util :refer :all])
   (:require [lab4.rule.default-rule :refer :all])
-  (:require [lab4.definition.operation :refer :all]))
+  (:require [lab4.definition.operation :refer :all])
+  (:require [lab4.definition.constant :refer :all]))
 
 (def de-morgan
   (let [rule-application #(apply-rules de-morgan %)]

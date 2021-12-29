@@ -7,12 +7,12 @@
 
 (def remove-implication
   (let [rule-application #(apply-rules remove-implication %)]
-    (cons
+    (conj
+      (default-rule rule-application)
       [(fn [expr] (imp? expr))
        (fn [expr]
          (if (= 1 (count (args expr)))
            (first (args expr))
            (apply-rules remove-implication (apply dis (concat
                                                         (map #(rule-application (inv %)) (butlast (args expr)))
-                                                        (list (rule-application (last (args expr)))))))))]
-      (default-rule rule-application))))
+                                                        (list (rule-application (last (args expr)))))))))])))
